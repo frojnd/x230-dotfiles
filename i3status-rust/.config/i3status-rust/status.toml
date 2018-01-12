@@ -1,0 +1,52 @@
+theme = "solarized-dark"
+icons = "awesome"
+
+[[block]]
+block = "weather"
+format = "{weather} {temp}° {wind} km/s"
+service = { name = "openweathermap", api_key = "0f10da6e51637ee11b7c0c211d1aa662", city_id = "3196359", units = "metric" }
+
+[[block]]
+block = "disk_space"
+path = "/"
+alias = "/"
+info_type = "available"
+unit = "GB"
+interval = 20
+
+[[block]]
+block = "net"
+device = "wlp2s0"
+interval = 5
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{Mup}%"
+format_swap = "{SUp}%"
+clickable = false
+
+[[block]]
+block = "cpu"
+interval = 1
+
+[[block]]
+block = "temperature"
+interval = 10
+collapsed = true
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "pacman"
+interval = 10
+
+[[block]]
+block = "battery"
+interval = 10
+
+[[block]]
+block = "time"
+interval = 60
+format = "%a %d/%m %R"
