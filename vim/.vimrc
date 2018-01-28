@@ -41,6 +41,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-surround'
 Plugin 'joukevandermaas/vim-ember-hbs'
+Plugin 'rhysd/vim-crystal'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -85,7 +86,7 @@ set list
 set spell
 hi SpecialKey guifg=#808080
 
-" Tryo to use fastest ag possilbe
+" Try to use fastest ag possilbe
 set grepprg=ag\ --nogroup\ --nocolor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
