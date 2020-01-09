@@ -5,6 +5,9 @@ xrandr --output DP1 --auto &
 xrandr --output DP1 --above LVDS1 &
 feh --randomize --bg-fill ~/system/wallpapers/* &
 xmodmap ~/.Xmodmap &
-xss-lock -- i3lock -n -i ~/pictures/wallpapers/black-arch-linux-wallpaper.png &
+xss-lock -- locker.sh &
 xbindkeys &
+dbus-update-activation-environment --systemd DISPLAY
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
 exec i3

@@ -1,10 +1,14 @@
 theme = "solarized-dark"
 icons = "awesome"
 
+# [[block]]
+# block = "weather"
+# format = "{weather} {temp}° {wind} km/s"
+# service = { name = "openweathermap", api_key = "0f10da6e51637ee11b7c0c211d1aa662", city_id = "3196359", units = "metric" }
+
 [[block]]
-block = "weather"
-format = "{weather} {temp}° {wind} km/s"
-service = { name = "openweathermap", api_key = "0f10da6e51637ee11b7c0c211d1aa662", city_id = "3196359", units = "metric" }
+block = "backlight"
+device = "intel_backlight"
 
 [[block]]
 block = "disk_space"
@@ -12,11 +16,11 @@ path = "/"
 alias = "/"
 info_type = "available"
 unit = "GB"
-interval = 20
+interval = 60
 
 [[block]]
 block = "net"
-device = "wlp2s0"
+device = "wlp4s0"
 interval = 5
 
 [[block]]
@@ -42,11 +46,27 @@ block = "sound"
 block = "pacman"
 interval = 10
 
+[[block]]                                                             
+block = "battery"                                                     
+interval = 10                                                         
+#device = 0                                                            
+                                                                      
+#[[block]]                                                             
+#block = "battery"                                                     
+#interval = 10                                                         
+#device = 1
+
+# [[block]]
+# block = "custom"
+# command = "echo  `cat /sys/class/power_supply/BAT0/capacity`%"
+# interval = 60
+#
 [[block]]
-block = "battery"
-interval = 10
+block = "custom"
+command = "echo  `cat /sys/class/power_supply/BAT1/capacity`%"
+interval = 60
 
 [[block]]
 block = "time"
-interval = 60
+timezone = "Europe/Ljubljana"
 format = "%a %d/%m %R"

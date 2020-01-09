@@ -1,15 +1,16 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" Searhc engine
+Plugin 'mileszs/ack.vim'
 
 " RUBY ON RAILS CONFIGS
 " ##########################
@@ -20,7 +21,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-bundler'
 " Commenting and uncommenting stuff
 Plugin 'tomtom/tcomment_vim'
-" Autogenerate pairs for "{[( )
+" Autogenerate pairs for {[( )
 Plugin 'jiangmiao/auto-pairs'
 " Tab completions
 Plugin 'ervandew/supertab'
@@ -30,7 +31,7 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'wincent/command-t'
+"Plugin 'wincent/command-t'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'airblade/vim-gitgutter'
@@ -44,6 +45,10 @@ Plugin 'joukevandermaas/vim-ember-hbs'
 Plugin 'rhysd/vim-crystal'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+call plug#end()
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -58,7 +63,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 "
 syntax on
-colorscheme bubblegum
+colorscheme bubblegum-256-dark
 autocmd VimEnter * NERDTree
 
 " omnicompletion for rails
@@ -127,3 +132,25 @@ endfunction
 " Set the type for the file type and override if file type
 " " already has detected
 au BufRead,BufNewFile *.pdf.erb set filetype=html
+
+set encoding=utf-8
+
+function! DeleteAfterFirst(...)
+    for p in a:000
+        let @/ = p
+        0//
+        +1,$g//d
+    endfor
+endfunction
+
+if &term =~# 'screen' || &term =~# 'tmux' || &term =~# 'xterm'
+  let g:CommandTCancelMap=['<ESC>', '<C-c>']
+  let g:CommandTSelectNextMap = ['<C-n>', '<C-j>', '<Down>', '<ESC>OB']
+  let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<Up>', '<ESC>OA']
+endif
+
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" Command-T specific settings for large files
+" let g:CommandTFileScanner = "find"
+" let g:CommandTMaxFiles=400000

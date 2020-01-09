@@ -1,11 +1,22 @@
-# Increase volume
-"amixer set Master 5%+"
-   XF86AudioRaiseVolume
+# Toggle mute/unmute of the volume
+"amixer set Master toggle"
+   XF86AudioMute
 
 # Decrease volume
 "amixer set Master 5%-"
    XF86AudioLowerVolume
 
-# Toggle mute/unmute of the volume
-"amixer set Master toggle"
-   XF86AudioMute
+# Increase volume
+"amixer set Master 5%+"
+   XF86AudioRaiseVolume
+
+# Decrease backlight
+"xbacklight -10"
+   XF86MonBrightnessDown
+
+# Increase backlight
+"xbacklight +10"
+   XF86MonBrightnessUp
+
+"playerctl play-pause"
+  XF86AudioPlay
